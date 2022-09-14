@@ -1,4 +1,4 @@
-const contacts = [];
+let contacts = [];
 
 const add = (contact)=> { //parameter 
     for(let i=0;i<contacts.length;i++) {
@@ -31,7 +31,6 @@ console.log(removedEl);*/
 
 
 //remove email
-
 const remove = (email)=> { //parameter 
     for(let i=0;i<contacts.length;i++) {
         if(email==contacts[i].email){
@@ -45,8 +44,10 @@ const remove = (email)=> { //parameter
     }
 }
 }
+
    /* contacts.push(contact);
     console.log ("remove email"); */
+
 
 remove ("hildur@tskoli.is");
 console.log(contacts);
@@ -54,18 +55,33 @@ console.log(contacts);
 
 //edit
 
+const edit = (email,newData)=> {
+    for(let i=0;i<contacts.length;i++) {
+        if (email==contacts[i].email){
+		contacts[i]=newData
+ 		console.log ("was updated")
+            return;
+        }
+    	else {
+        console.log ("updated")
+    	}
+    }  
+}
+edit ("anna@tskoli.is", {name: "Anna Blabla", email: "blabla@tskoli.is"})
+
+
+
 //get contact
 const get = (email)=> {
     for(let i=0;i<contacts.length;i++) {
-        if (get==contacts[i].email){
-            console.log("Name:Jón Jónsson")
-            console.log("Email: jon@tskoli.is")
+        if (email==contacts[i].email){
+            console.log(contacts[i].name)
+            console.log(contacts[i].email)
             return;
         }
-    else {
-        console.log ("Contact not found")
-    }
-    }  
+    } 
+    
+        console.log ("Contact not found")   
 }
 get ("jon@tskoli.is")
 console.log(contacts)
@@ -73,7 +89,16 @@ console.log(contacts)
 
 //list all
 
-const list = (name)=> {
+const list = (names)=> {
     names.forEach(name => console.log(name));
-    list ([])
-}
+    }
+    add ({name: "Hildur Eiríksdóttir", email:"hildur@tskoli.is"})
+list (contacts)
+
+//Clear
+
+const clear = ()=> {
+    contacts = []
+    console.log ("The contact list was cleared")
+    }
+    clear ()
